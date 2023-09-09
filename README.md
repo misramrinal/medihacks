@@ -1,4 +1,4 @@
-# medihacks
+# Medihacks
 
 ## Launching
 ### In order to run the website
