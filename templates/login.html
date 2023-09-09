@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Quantum</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/form-elements.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style_login.css') }}">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ url_for('static', filename='ico/apple-touch-icon-144-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ url_for('static', filename='ico/apple-touch-icon-114-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ url_for('static', filename='ico/apple-touch-icon-72-precomposed.png') }}">
+        <link rel="apple-touch-icon-precomposed" href="{{ url_for('static', filename='ico/apple-touch-icon-57-precomposed.png') }}">
+
+
+		<style>
+			body {
+				background-image: url("{{ url_for('static', filename='ico/new1.jpg') }}");
+				background-size: cover; /* Optional: Adjust the image size to cover the entire background */
+			}
+
+
+        .form-bottom{
+			background-color: rgba(130, 22, 22, 0);
+            /* background-color: #af1616;  */
+            padding: 20px; 
+			/* background-image: url("assets/ico/new1.jpg"); */
+				/* background-size: cover; */
+		}
+		.form-box{
+			background-color: rgba(130, 22, 22, 0);
+            /* background-color: #af1616;  */
+            padding: 20px; 
+			/* background-image: url("assets/ico/new1.jpg"); */
+				/* background-size: cover; */
+		}
+		.form-top{
+			background-color: rgba(255, 255, 255, 0.3);
+            /* background-color: #af1616;  */
+            padding: 20px; 
+			/* background-image: url("assets/ico/new1.jpg"); */
+				/* background-size: cover; */
+		}
+
+		/* .form-bottom input[type="text"],  */
+        .form-bottom {
+            background-color: rgba(255, 255, 255, 0.3);
+            border: none;
+            border-bottom: 1px solid #fff; /* Optional: Add a border to the text boxes */
+            color: #be1717; /* Optional: Set the text color */
+		}
+		.transparent-textarea {
+            background-color: rgba(255, 255, 255, 0.3); /* Set the background color to transparent */
+            border: 1px solid #ccc; /* Optional: Add a border to the textarea */
+            color: #000; /* Optional: Set the text color */
+            resize: vertical; /* Optional: Allow vertical resizing of the textarea */
+            width: 300px; /* Optional: Set the width of the textarea */
+            height: 200px; /* Optional: Set the height of the textarea */
+        }
+		.custom-text {
+            color: white; /* Change the color value to your desired color */
+        }
+		input::placeholder {
+			color: #1c87c9;
+			opacity: 1;
+		}
+		input:placeholder-shown {
+			border: 1px solid #095484;
+		}
+		.flask_msg {
+            font-size: 30px; /* Change to your desired font size */
+            /* Add more CSS styles as needed */
+        }
+
+		#popup-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 10000; 
+        }
+        body.blur {
+            overflow: hidden; /* Prevent scrolling of the background */
+            filter: blur(5px); /* Adjust the blur intensity as needed */
+        }
+        #popup-box p {
+            font-size: 18px; /* Adjust the font size as needed */
+            color: #333;
+        }
+        #blur-background {
+          overflow: hidden;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+            backdrop-filter: blur(5px); /* Adjust the blur intensity as needed */
+            z-index: 9999; /* Make sure the blurred background is on top */
+        }
+        .new {
+          background-color: #2c2e3d;
+        }
+		</style>
+
+    </head>
+
+    <body>
+		<!-- <button onclick="showPopup()">Show Pop-up</button> -->
+		<div id="popup-box">
+		{% with messages = get_flashed_messages() %}  
+             {% if messages %}  
+                   {% for message in messages %}  
+                        <p class="flask_msg">{{ message }}</p>  
+                   {% endfor %}  
+             {% endif %}  
+          {% endwith %}  
+		  <button id="close-button" onclick="hidePopup()">Close</button>
+		</div>
+		<div id="blur-background"></div>
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                	
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><strong>TEAM QUANTUM</strong> </h1>
+                            <div class="description">
+                            	<!-- <p>
+	                            	This is a free responsive <strong>"login and register forms"</strong> template made with Bootstrap. 
+	                            	Download it on <a href="http://azmind.com" target="_blank"><strong>AZMIND</strong></a>, 
+	                            	customize and use it as you like!
+                            	</p> -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-5">
+                        	
+                        	<div class="form-box">
+	                        	<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3 class="custom-text"><strong>Login to our site</strong></h3>
+	                            		<p class="custom-text">Enter username and password to log on:</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-key"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
+				                    <form role="form" action="/login" method="POST" class="login-form">
+							
+				                    	<div class="form-group">
+				                    		<label class="sr-only" for="Username">Username</label>
+									
+				                        	<input type="text" name="Username" placeholder="Username..." class="form-username form-control" id="form-username">
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="Password">Password</label>
+							
+				                        	<input type="password" name="Password" placeholder="Password..." class="form-password form-control" id="form-password">
+				                        </div>
+				                        <button type="submit" class="btn">Sign in!</button>
+								
+				                    </form>
+			                    </div>
+		                    </div>
+		                
+		                	<div class="social-login">
+	                        	<h3>...or login with:</h3>
+	                        	<div class="social-login-buttons">
+		                        	<a class="btn btn-link-1 btn-link-1-facebook" href="#">
+		                        		<i class="fa fa-facebook"></i> Facebook
+		                        	</a>
+		                        	<a class="btn btn-link-1 btn-link-1-twitter" href="#">
+		                        		<i class="fa fa-twitter"></i> Twitter
+		                        	</a>
+		                        	<a class="btn btn-link-1 btn-link-1-google-plus" href="{{ url_for('login_google')}}">
+		                        		<i class="fa fa-google-plus"></i> Google Plus
+		                        	</a>
+	                        	</div>
+	                        </div>
+	                        
+                        </div>
+                        
+                        <div class="col-sm-1 middle-border"></div>
+                        <div class="col-sm-1"></div>
+                        	
+                        <div class="col-sm-5">
+                        	
+                        	<div class="form-box">
+                        		<div class="form-top">
+	                        		<div class="form-top-left">
+	                        			<h3 class="custom-text"><strong>SIGN UP NOW</strong></h3>
+	                            		<p class="custom-text">Fill in the form below to get instant access:</p>
+	                        		</div>
+	                        		<div class="form-top-right">
+	                        			<i class="fa fa-pencil"></i>
+	                        		</div>
+	                            </div>
+	                            <div class="form-bottom">
+				                    <form role="form" action="/signin" method="post" class="registration-form">
+				                    	<div class="form-group">
+											<!-- <h4><b>Username:</b></h4> -->
+				                    		<!-- <label class="sr-only" for="form-username">Username</label> -->
+				                        	<input type="text" name="username" placeholder="Username" class="form-username form-control" id="form-first-name">
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-name">name</label>
+				                        	<input type="text" name="name" placeholder="Name..." class="form-name form-control" id="form-last-name">
+				                        </div>
+				                        <div class="form-group">
+				                        	<label class="sr-only" for="form-email">Email</label>
+				                        	<input type="text" name="email" placeholder="Email..." class="form-email form-control" id="form-email">
+				                        </div>
+										<div class="form-group">
+				                        	<label class="sr-only" for="form-gender">Gender</label>
+				                        	<input type="text" name="gender" placeholder="Gender..." class="form-gender form-control" id="form-email">
+				                        </div>
+										<div class="form-group">
+				                        	<label class="sr-only" for="form-age">Age</label>
+				                        	<input type="text" name="age" placeholder="Age..." class="form-age form-control" id="form-email">
+				                        </div>
+										<div class="form-group">
+				                        	<label class="sr-only" for="form-height">Height</label>
+				                        	<input type="text" name="height" placeholder="Height..." class="form-height form-control" id="form-email">
+				                        </div>
+										<div class="form-group">
+				                        	<label class="sr-only" for="form-weight">Weight</label>
+				                        	<input type="text" name="weight" placeholder="Weight..." class="form-weight form-control" id="form-email">
+				                        </div>
+										<div class="form-group">
+				                        	<label class="sr-only" for="form-sleep_duration">Sleep Duration</label>
+				                        	<input type="text" name="sleep_duration" placeholder="Sleep Duration..." class="form-sleep_duration form-control" id="form-email">
+				                        </div>
+				                        <button type="submit" class="btn">Sign me up!</button>
+				                    </form>
+			                    </div>
+                        	</div>
+                        	
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+        <!-- Footer -->
+        <footer>
+        	<div class="container">
+        		<div class="row">
+        			
+        			<div class="col-sm-8 col-sm-offset-2">
+        				<div class="footer-border"></div>
+        				<p><i class="fa fa-love"></i><a href="https://bootstrapthemes.co"></a></p>
+        			</div>
+        			
+        		</div>
+        	</div>
+        </footer>
+
+        <!-- Javascript -->
+        <script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.backstretch.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+		<script>
+			// JavaScript functions to show and hide the pop-up box
+			function showPopup() {
+					document.getElementById('popup-box').style.display = 'block';
+					document.getElementById('blur-background').style.display = 'block';
+					document.getElementById('close-button').addEventListener('click', hidePopup);
+				}
+		
+				// JavaScript function to hide the pop-up box and remove the blur effect from the background
+				function hidePopup() {
+					document.getElementById('popup-box').style.display = 'none';
+					document.getElementById('blur-background').style.display = 'none';
+					document.getElementById('close-button').removeEventListener('click', hidePopup);
+				}
+
+				if (document.getElementsByClassName('flask_msg').length > 0) {
+            window.onload = function() {
+                showPopup();
+            };
+        }
+		</script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+		{{ prediction_text }}
+		
+    </body>
+
+</html>
