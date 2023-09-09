@@ -3,7 +3,7 @@
 ## Launching
 ### In order to run the website
 ```bash
-python3 login.py
+python login.py
 ```
 Then click on the link provided in the terminal
 ```bash
