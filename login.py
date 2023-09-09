@@ -16,12 +16,14 @@ import cv2
 import situp
 import pushup
 
+#Initializing flask app
 app = Flask(__name__)
-app.secret_key = "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"
+app.secret_key = "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" #Adding key
 firebase = firebase.FirebaseApplication('https://titanesp32-default-rtdb.asia-southeast1.firebasedatabase.app/', None)
 app.app_context().push()
 model = pickle.load(open('model.pkl', 'rb'))
 
+#Firebase API configuration
 config={
     "apiKey": "AIzaSyA3UkN9CswTBMmPdPrR7UzEHILtqgCZ548",
   "authDomain": "titanesp32.firebaseapp.com",
@@ -33,12 +35,13 @@ config={
   "measurementId": "G-NETX6BS1Y6"
 }
 
+#Initialising firebase
 firebas=pyrebase.initialize_app(config)
 
-# firebas= pyrebase.initialize_app(config)
 authe = firebas.auth()
 database = firebas.database()
 
+#Declaring some global variables used in the code
 age=0
 weighht=0
 height=0
@@ -59,12 +62,13 @@ flow = Flow.from_client_secrets_file(
 # This is the landing page
 @app.route('/')
 def home():
-    return render_template('dashboard.html')
+    return render_template('dashboard.html') #Go to the home page of the website
 
 @app.route('/home')
 def homei():
     return render_template('dashboard.html')
 
+#Redirect to Login Page
 @app.route("/login_page")
 def login_page():
     return render_template("login.html")
@@ -99,7 +103,7 @@ def dashboard():
 def predict():
     global age, gender, sleep_duration, height, weight
     
-    # Getting input parameters from the database
+    # Getting input parameters from the firebase database
     data_sys= database.child('systolic').get().val()
     data_dia= database.child('diastolic').get().val()
     data_temp= database.child('Temperature').get().val()
@@ -107,6 +111,7 @@ def predict():
     data_SD= database.child('sleep_disorder').get().val()
     data_step= database.child('steps').get().val()
     
+    #Getting the required data and storing them
     data_sys = OrderedDict(data_sys)
     data_dia = OrderedDict(data_dia)
     data_temp = OrderedDict(data_temp)
@@ -156,7 +161,7 @@ def predict():
     Bmi_text=""
     
     
-    # Some more optimizations
+    # Some more Features 
     if(value_HR < 60 or value_HR > 100):
         HR_text = f"We detected abnormal heart rate from your readings. Your heart rate reading is {value_HR}"
         flash(HR_text)
@@ -179,8 +184,8 @@ def predict():
         
     return render_template('index.html', prediction_text=prediction, input_text=Bmi, fitness_text=fitness_score, HR_text=HR_text, sys_text=sys_text, dia_text=dia_text, Bmi_text=Bmi_text, temp_text=temp_text)
 
-# Create Logout Page
 
+# Create Logout Page
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.clear()
@@ -231,7 +236,7 @@ def login_is_required(function):
 
     return wrapper
         
-
+#Google authentication for signin
 @app.route("/callback")
 def callback():
     flow.fetch_token(authorization_response=request.url)
@@ -267,10 +272,13 @@ def login_google():
     session["state"] = state
     return redirect(authorization_url)
 
-
+#getting video feed from webcam
 cap = cv2.VideoCapture(0)
+#setting the dimmensions of the vidoe feed
 cap.set(3, 1280)
 cap.set(4, 720)
+
+#Creating an object of situp class and pushup class
 sit = situp.situps()
 push=pushup.pushup()
 
