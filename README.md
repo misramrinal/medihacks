@@ -60,6 +60,7 @@ Web page
 - sklearn
 - Firebase
 - Arduino
+- Mediapipe
 - Eagle
 - HTML, CSS, javascript, bootstrap
 
