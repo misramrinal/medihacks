@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect, url_for, request, jsonify, render_template, session, flash, abort, Response
+from flask import Flask, redirect, url_for, request, render_template, session, flash, abort, Response
 import uuid as uuid
 from firebase import firebase
 import requests
