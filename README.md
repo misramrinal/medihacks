@@ -39,9 +39,8 @@ Our solution approach is:
 
 Web page
 ![WhatsApp Image 2023-08-05 at 7 11 59 AM (2)](https://github.com/misramrinal/medihacks/assets/100671634/08f2a44f-a5a2-46f4-8121-83e9f4073e1f)
+![WhatsApp Image 2023-08-05 at 7 11 59 AM](https://github.com/misramrinal/medihacks/assets/100671634/f156d62d-f454-41a9-9ed4-3c109a2fc39e)
 
-![WhatsApp Image 2023-08-05 at 7 11 59 AM](https://github.com/monalisa22/FutureWearHackathon/assets/100671634/b99173a1-d04c-4116-bd11-d04bf7382d7d)
-![WhatsApp Image 2023-08-05 at 7 11 59 AM (1)](https://github.com/monalisa22/FutureWearHackathon/assets/100671634/6dcf7062-292f-426e-80ff-279039d7bde0)
 
 ## Situps
 https://github.com/misramrinal/medihacks/assets/100671634/60e564a8-ab07-41e6-99f4-5f3613cb7943
@@ -50,17 +49,11 @@ https://github.com/misramrinal/medihacks/assets/100671634/60e564a8-ab07-41e6-99f
 https://github.com/misramrinal/medihacks/assets/100671634/ef5d65f9-eb93-4305-9312-cddb05f4a654
 
 
-
-
-
-
-
 ## Roadmap
 ![collage (2)](https://github.com/monalisa22/FutureWearHackathon/assets/100671634/d175dc6d-26a2-4074-aa0e-6eeb1d214c7b)
 
 ## PCB design of Smart Watch
 ![WhatsApp Image 2023-08-05 at 6 37 23 AM](https://github.com/monalisa22/FutureWearHackathon/assets/100671634/d07393a4-903d-4a44-96e9-bac5d5f17a30)
-
 
 
 ## Tools and Tech Stacks
