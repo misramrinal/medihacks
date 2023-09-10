@@ -42,13 +42,13 @@ class situps():
                     1, (255, 0, 0), 3)
                 print(self.volBar)
             cv2.putText(img, f'Situps : {int(self.count)}', (40, 550), cv2.FONT_HERSHEY_COMPLEX,
-                    1, (255, 0, 0), 3)
+                    1, (100, 20, 160), 3)
         cv2.rectangle(img, (50, 150), (85, 400), (255, 0, 0), 3)
         cv2.rectangle(img, (50, int(self.volBar)), (85, 400), (255, 0, 0), cv2.FILLED)
         return img
 
 def main():
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
     cap.set(3, 1280)
     cap.set(4, 720)
     sit = situps()
