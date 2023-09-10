@@ -38,7 +38,8 @@ Our solution approach is:
 
 
 Web page
-![WhatsApp Image 2023-08-05 at 7 11 59 AM (2)](https://github.com/monalisa22/FutureWearHackathon/assets/100671634/5a08b37c-7422-46c8-bbdb-203e1a2174ec)
+![WhatsApp Image 2023-08-05 at 7 11 59 AM (2)](https://github.com/misramrinal/medihacks/assets/100671634/08f2a44f-a5a2-46f4-8121-83e9f4073e1f)
+
 ![WhatsApp Image 2023-08-05 at 7 11 59 AM](https://github.com/monalisa22/FutureWearHackathon/assets/100671634/b99173a1-d04c-4116-bd11-d04bf7382d7d)
 ![WhatsApp Image 2023-08-05 at 7 11 59 AM (1)](https://github.com/monalisa22/FutureWearHackathon/assets/100671634/6dcf7062-292f-426e-80ff-279039d7bde0)
 
