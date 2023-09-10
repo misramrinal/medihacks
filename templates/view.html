@@ -1,0 +1,14 @@
+<head>  
+    <title>home</title>  
+    </head>  
+    <body>  
+        {% block title %} View all Users{% endblock %}
+        {% block content %}
+            {% for item in values %}
+                <p>Username: {{item.user}}, Name: {{item.name}}, Email: {{item.email}}</p>
+            {% endfor %}
+        {% endblock %}
+    <!-- <h3>Welcome to the website</h3>  
+    <a href = "{{ url_for('login') }}">login</a>   -->
+    </body>  
+    </html>  

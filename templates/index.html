@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Quantum</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/circle.css') }}">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
+
+  <!-- Favicons -->
+  <link href="{{ url_for('static', filename='assets/img/favicon.png') }}" rel="icon">
+  <link href="{{ url_for('static', filename='assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ url_for('static', filename='assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ url_for('static', filename='assets/css/style.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Quantum
+  * Updated: May 30 2023 with Bootstrap v5.3.0
+  * Template URL: https://bootstrapmade.com/Quantum-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <style>
+    /* body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  } */
+  
+  .data-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .data-item {
+  width: calc(33.33% - 20px); /* 33.33% width with some margin between items */
+  margin: 20px 10px; /* Increase the top and bottom margin to add more space between rows */
+}
+  
+  .data-item h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .data-item p.value {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+
+  /* Float the wrapper and card to the right */
+.wrapper, .card {
+  float: right;
+  justify-content: center;
+}
+
+/* Add some margin if necessary */
+.wrapper {
+  /* margin-right: 50px; */
+  margin-right: 200px;
+}
+
+/* Center the container horizontally */
+.cont {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 150px;
+}
+
+.new {
+          background-color: #2c2e3d;
+        }
+
+.yo{
+  top: 100px;
+}
+.hi{
+  padding-top: 200px;
+}
+
+.bmi {
+  padding-top: 50px;
+}
+
+.progress-container {
+      position: relative;
+      /* width: 80%; */
+      margin: 0 auto;
+      padding-top: 30px; 
+    }
+
+.progress-text {
+      position: absolute;
+      /* top: -20px;  */
+      /* left: 0;
+      right: 0; */
+      font-size: 14px;
+      font-weight: bold;
+      color: #000;
+    }
+
+.progress-bar {
+  width: 80%;
+      background-color: #2c2e3d;
+      height: 30px;
+      border-radius: 15px; /* Half of the height to make the ends circular */
+      margin: 0 auto;
+      overflow: hidden;
+      /* padding-top: 10px; Add padding at the top */
+    }
+
+
+    .progress {
+      height: 100%;
+      background-color: #4CAF50;
+      background-image: linear-gradient(to right, #a445b2, #fa4299);
+      width: 0;
+      transition: width 0.3s;
+      border-radius: 15px; /* Half of the height to make the ends circular */
+      /* padding-top: 10px;  */
+    }
+
+    input {
+      margin-top: 20px;
+      padding: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #inputValue {
+      display: none;
+    }
+
+    .yay {
+      padding-top: 400px;
+      font-size: 20px;
+    }
+
+    #popup-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            z-index: 10000; 
+        }
+
+        body.blur {
+            overflow: hidden; /* Prevent scrolling of the background */
+            filter: blur(5px); /* Adjust the blur intensity as needed */
+        }
+
+        #popup-box p {
+            font-size: 18px; /* Adjust the font size as needed */
+            color: #333;
+        }
+
+        #blur-background {
+          overflow: hidden;
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+            backdrop-filter: blur(5px); /* Adjust the blur intensity as needed */
+            z-index: 9999; /* Make sure the blurred background is on top */
+        }
+
+        .flask_msg {
+            font-size: 30px; /* Change to your desired font size */
+            /* Add more CSS styles as needed */
+        }
+
+        
+        img {
+  /* border: 1px solid #ddd; */
+  border-radius: 4px;
+  padding-right: 15px;
+  width: 70px;
+}
+  </style>
+</head>
+
+<body>
+
+  <div id="popup-box">
+		{% with messages = get_flashed_messages() %}  
+             {% if messages %}  
+                   {% for message in messages %}  
+                        <p class="flask_msg">{{ message }}</p>  
+                   {% endfor %}  
+             {% endif %}  
+          {% endwith %}  
+		  <button id="close-button" onclick="hidePopup()">Close</button>
+		</div>
+    <div id="blur-background"></div>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="{{ url_for('dashboard')}}">Quantum</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{{ url_for('dashboard')}}">Return To Home</a></li>
+          
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade yo" data-bs-ride="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <div class="data-container">
+            <div class="data-item">
+              <h1 style="color: white; margin-bottom: 20px;">Temperature</h1>
+              <p class="value" id="temperature">22 &#8451;</p>
+            </div>
+            <div class="data-item">
+              <h1 style="color: white; margin-bottom: 20px;">Diastolic</h1>
+              <p class="value" id="diastolic"></p>
+            </div>
+            <div class="data-item">
+              <h1 style="color: white; margin-bottom: 20px;">Systolic</h1>
+              <p class="value" id="systolic"></p>
+            </div>
+            <div class="data-item">
+              <h1 style="color: white; margin-bottom: 20px;">HeartRate</h1>
+              <p class="value" id="heartrate"></p>
+            </div>
+            <div class="data-item">
+              <h1 style="color: white; margin-bottom: 20px;">Steps Count</h1>
+              <p class="value" id="steps">22 &#8451;</p>
+            </div>
+            <div class="data-item">
+              <h1 style="color: white; margin-bottom: 20px;">Sleep Disorder</h1>
+              <p class="value" id="sleep-disorder"></p>
+            </div>
+          </div>
+          <div class="cont wrapper">
+            <div class="card react new">
+              <div class="circle">
+                <div class="bar-10"></div>
+                <div class="box"><span></span></div>
+              </div>
+              <div class="text">Stress Level</div>
+              <a href="{{ url_for('predict')}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Check Again</a>
+            </div>
+          </div>
+          <!-- <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Quantum</span></h2>
+          <p class="animate__animated fanimate__adeInUp">Here is your personalized Fitness Checker. Check your fitness now!</p>
+          <a href="{{ url_for('predict')}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Check your Fitness</a> -->
+        </div>
+        <!-- <a href="{{ url_for('predict')}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Check Again</a> -->
+      </div>
+
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+    
+
+  </section><!-- End Hero -->
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        
+        <div class="section-title" data-aos="zoom-out">
+          <!-- <h2>About</h2> -->
+          <p>BMI INDEX</p>
+        </div>
+
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+          </div>
+          <!-- Add text elements for certain points -->
+          <!-- <div class="progress-text" style="left: 0%;"></div> -->
+          <div class="progress-text" style="left: 33%;">Underweight</div>
+          <div class="progress-text" style="left: 48%;">Normal</div>
+          <div class="progress-text" style="left: 60%;">Overweight</div>
+          <div class="progress-text" style="left: 72%;">Obesity</div>
+        </div>
+
+        <div class="section-title bmi" data-aos="zoom-out">
+          <!-- <h2>About</h2> -->
+          <p><h1>BMI SCORE : {{ input_text }}</h1> </p>
+        </div>
+        
+        <input type="number" id="inputValue" value="{{ input_text }}"/>
+        <!-- <button onclick="updateProgressBar()">Update Progress</button> -->
+
+        <div class="section-title" data-aos="zoom-out">
+          <!-- <h2>About</h2> -->
+          <p>Fitness INDEX</p>
+
+          <div class="cont wrapper">
+            <div class="card js new">
+              <div class="circle">
+                <div class="bar-100"></div>
+                <div class="box"><span></span></div>
+              </div>
+              <div class="text">Fitness Level</div>
+              <a href="{{ url_for('predict')}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Check Again</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="cont wrapper">
+          <div class="card js new">
+            <div class="circle">
+              <div class="bar-100"></div>
+              <div class="box"><span></span></div>
+            </div>
+            <div class="text">Fitness Level</div>
+            <a href="{{ url_for('predict')}}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Check Again</a>
+          </div>
+        </div> -->
+
+        <div class="content yay" data-aos="fade-up">
+          <div class="col-lg-6">
+            <!-- <p>
+              Our objective is to provide an inovative solution that collects health vitals and
+              generates a fitness score using non-invasive methods or facial reading techniques.
+            </p> -->
+            <ul>
+              <li><i class="ri-check-double-line"></i> {{ HR_text}}</li>
+              <li><i class="ri-check-double-line"></i> {{ sys_text}}</li>
+              <li><i class="ri-check-double-line"></i> {{ dia_text}}</li>
+              <li><i class="ri-check-double-line"></i> {{ Bmi_text}}</li>
+              <li><i class="ri-check-double-line"></i> {{ temp_text}}</li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+    </section><!-- End About Section -->
+
+    <section id="features" class="features">
+      <div class="container">
+
+        <ul class="nav nav-tabs row d-flex">
+          <!-- <li class="nav-item col-3" data-aos="zoom-in">
+            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+              <i class="ri-gps-line"></i>
+              <h4 class="d-none d-lg-block">Training and Data Analysis</h4>
+            </a>
+          </li> -->
+          <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="100">
+            <a class="nav-link" href="{{ url_for('situp')}}">
+              <img src="{{ url_for('static', filename='assets/img/team/situp.jpg') }}" class="img-fluid" alt="">
+              <h4 class="d-none d-lg-block">Situp</h4>
+            </a>
+          </li>
+          <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="200">
+            <a class="nav-link" href="{{ url_for('pushup')}}">
+              <img src="{{ url_for('static', filename='assets/img/team/pushup.jpg') }}" class="img-fluid" alt="">
+              <h4 class="d-none d-lg-block">Pushup</h4>
+            </a>
+          </li>
+          <!-- <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="300">
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+              <i class="ri-store-line"></i>
+              <h4 class="d-none d-lg-block">Advanced and Accurate method of Stress Detection</h4>
+            </a>
+          </li> -->
+        </ul>
+      </div>
+    </section>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script>
+    function updateProgressBar() {
+
+      const progress = document.getElementById("progress");
+      const input = document.getElementById("inputValue").value;
+
+      // var BMI_text = JSON.parse('{{ prediction_text | tojson | safe}}');
+
+      let value = parseInt(input, 10);
+      value = Math.min(value, 50); // Limit value to a maximum of 50
+
+      if (!isNaN(value)) {
+        progress.style.width = (value / 50) * 100 + "%";
+      }
+    }
+    window.addEventListener('load', updateProgressBar);
+    
+  </script>
+
+  <!-- Vendor JS Files -->
+  <script src="{{ url_for('static', filename='assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+
+   <!-- the scripts for products you want to access must be added-->
+
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+
+ <script type="module">
+   // Import the functions you need from the SDKs you need
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+   // TODO: Add SDKs for Firebase products that you want to use
+   // https://firebase.google.com/docs/web/setup#available-libraries
+
+   // Your web app's Firebase configuration here (Do not use the existing configuration)
+   const firebaseConfig = {
+    apiKey: "AIzaSyA3UkN9CswTBMmPdPrR7UzEHILtqgCZ548",
+  authDomain: "titanesp32.firebaseapp.com",
+  databaseURL: "https://titanesp32-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "titanesp32",
+  storageBucket: "titanesp32.appspot.com",
+  messagingSenderId: "698992859910",
+  appId: "1:698992859910:web:c898ebdf0c072158e49c87",
+  measurementId: "G-NETX6BS1Y6"
+   };
+
+   // Initialize Firebase
+   firebase.initializeApp(firebaseConfig);
+
+
+   // getting reference to the database
+   var database = firebase.database();
+
+   //getting reference to the data we want
+  //  var dataRef1 = database.ref('DHT_11/Humidity');
+   var dataRef1 = database.ref('Temperature/data');
+   var dataRef2 = database.ref('diastolic/data');
+   var dataRef3 = database.ref('systolic/data');
+   var dataRef4 = database.ref('heartrate/data');
+   var dataRef5 = database.ref('steps/data');
+   var dataRef6 = database.ref('sleep_disorder/data');
+
+  //  let temp = dataRef1.toFixed(2);
+
+   //fetch the data
+  //  dataRef1.on('value', function(getdata1){
+  //    var humi = getdata1.val();
+  //    document.getElementById('humidity').innerHTML = humi + "%";
+  //  })
+
+    dataRef1.on('value', function(getdata1){
+     var temp = getdata1.val() + 21; 
+     temp = temp.toFixed(2);
+     document.getElementById('temperature').innerHTML = temp + "&#8451;";
+   })
+
+   dataRef2.on('value', function(getdata2){
+     var temp = getdata2.val();
+     document.getElementById('diastolic').innerHTML = temp;
+   })
+
+   dataRef3.on('value', function(getdata3){
+     var temp = getdata3.val();
+     document.getElementById('systolic').innerHTML = temp;
+   })
+
+   dataRef4.on('value', function(getdata4){
+     var temp = getdata4.val().toFixed();
+     document.getElementById('heartrate').innerHTML = temp;
+   })
+
+   dataRef5.on('value', function(getdata5){
+     var temp = getdata5.val();
+     document.getElementById('steps').innerHTML = temp;
+   })
+
+   dataRef6.on('value', function(getdata6){
+     var temp = getdata6.val().toString();
+     document.getElementById('sleep_disorder').innerHTML = temp;
+   })
+
+
+ </script>
+
+  <!-- Javascript
+  <script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery.backstretch.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/scripts.js') }}"></script> -->
+
+
+<script>
+  // JavaScript functions to show and hide the pop-up box
+  function showPopup() {
+      document.getElementById('popup-box').style.display = 'block';
+      document.getElementById('blur-background').style.display = 'block';
+      document.getElementById('close-button').addEventListener('click', hidePopup);
+    }
+
+    // JavaScript function to hide the pop-up box and remove the blur effect from the background
+    function hidePopup() {
+      document.getElementById('popup-box').style.display = 'none';
+      document.getElementById('blur-background').style.display = 'none';
+      document.getElementById('close-button').removeEventListener('click', hidePopup);
+    }
+
+    if (document.getElementsByClassName('flask_msg').length > 0) {
+        window.onload = function() {
+            showPopup();
+        };
+    }
+</script>
+
+
+<script>
+  let options = {
+    startAngle: -1.55,
+    size: 150,
+    value: 0.85,
+    fill: {gradient: ['#a445b2', '#fa4299']}
+  }
+  var prediction_text = JSON.parse('{{ prediction_text | tojson | safe}}');
+  let progressValue = (prediction_text * 20) / 100;
+
+  var fitness_text = JSON.parse('{{ fitness_text | tojson }}');
+  let fitnessValue = fitness_text/100
+
+  $(".circle .bar-10").circleProgress(options).on('circle-animation-progress',
+  function(event, progress, stepValue){
+    let scaledValue = (stepValue * 10).toFixed(0); // Scale back to 0-10 range for display
+    $(this).parent().find("span").text(scaledValue + "/10");
+  });
+  
+  $(".circle .bar-100").circleProgress(options).on('circle-animation-progress',
+      function(event, progress, stepValue){
+        $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2)) + "%");
+      });
+  $(".js .bar-100").circleProgress({
+    value: fitnessValue
+  });
+  $(".react .bar-10").circleProgress({
+    value: progressValue
+  });
+</script>
+
+
+
+<!-- {{ prediction_text }} -->
+
+</body>
+
+</html>

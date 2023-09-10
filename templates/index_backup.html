@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.data-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.data-item {
+  width: calc(33.33% - 20px); /* 33.33% width with some margin between items */
+  margin: 10px;
+}
+
+.data-item h1 {
+  margin: 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.data-item p.value {
+  font-size: 18px;
+  margin: 5px 0;
+}
+</style>
+</head>
+
+<body>
+ <div class="login">
+	<!-- <h1>Fitness Predictor</h1> -->
+
+     <!-- Main Input For Receiving Query to our ML
+    <form action="{{ url_for('predict')}}"method="post">
+    <input type="text" name="Gender" placeholder="Gender" required="required" />
+    <input type="text" name="Age" placeholder="Age" required="required" />
+		<input type="text" name="Sleep Duration" placeholder="Sleep Duration" required="required" />
+    <input type="text" name="SleepQuality" placeholder="SleepQuality" required="required" />
+    <input type="text" name="PhysicalActivity" placeholder="PhysicalActivity" required="required" />
+    <input type="text" name="Systolic" placeholder="Systolic" required="required" />
+    <input type="text" name="Diastolic" placeholder="Diastolic" required="required" />
+    <input type="text" name="Stress" placeholder="Stress" required="required" />
+    <input type="text" name="bs" placeholder="bs" required="required" />
+    <input type="text" name="HeartRate" placeholder="HeartRate" required="required" />
+    <input type="text" name="Temperature" placeholder="Temperature" required="required" />
+    <input type="text" name="DailySteps" placeholder="DailySteps" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form> -->
+
+   <br>
+   <br>
+   <!-- {{ prediction_text }} -->
+   <!-- {{ Fitness_score }} -->
+   
+ </div>
+
+ <div class="data-container">
+  <div class="data-item">
+    <h1>Temperature</h1>
+    <p class="value" id="temperature">22 &#8451;</p>
+  </div>
+  <div class="data-item">
+    <h1>Diastolic</h1>
+    <p class="value" id="diastolic"></p>
+  </div>
+  <div class="data-item">
+    <h1>Systolic</h1>
+    <p class="value" id="systolic"></p>
+  </div>
+  <div class="data-item">
+    <h1>HeartRate</h1>
+    <p class="value" id="heartrate"></p>
+  </div>
+  <div class="data-item">
+    <h1>Steps Count</h1>
+    <p class="value" id="steps">22 &#8451;</p>
+  </div>
+  <div class="data-item">
+    <h1>Sleep Disorder</h1>
+    <p class="value" id="sleep-disorder"></p>
+  </div>
+</div>
+
+ <!-- the scripts for products you want to access must be added-->
+
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+ <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+
+ <script type="module">
+   // Import the functions you need from the SDKs you need
+   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+   // TODO: Add SDKs for Firebase products that you want to use
+   // https://firebase.google.com/docs/web/setup#available-libraries
+
+   // Your web app's Firebase configuration here (Do not use the existing configuration)
+   const firebaseConfig = {
+    apiKey: "AIzaSyA3UkN9CswTBMmPdPrR7UzEHILtqgCZ548",
+  authDomain: "titanesp32.firebaseapp.com",
+  databaseURL: "https://titanesp32-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "titanesp32",
+  storageBucket: "titanesp32.appspot.com",
+  messagingSenderId: "698992859910",
+  appId: "1:698992859910:web:c898ebdf0c072158e49c87",
+  measurementId: "G-NETX6BS1Y6"
+   };
+
+   // Initialize Firebase
+   firebase.initializeApp(firebaseConfig);
+
+
+   // getting reference to the database
+   var database = firebase.database();
+
+   //getting reference to the data we want
+  //  var dataRef1 = database.ref('DHT_11/Humidity');
+   var dataRef1 = database.ref('Temperature/data');
+   var dataRef2 = database.ref('diastolic/data');
+   var dataRef3 = database.ref('systolic/data');
+   var dataRef4 = database.ref('heartrate/data');
+   var dataRef5 = database.ref('steps/data');
+   var dataRef6 = database.ref('sleep disorder/data');
+
+   //fetch the data
+  //  dataRef1.on('value', function(getdata1){
+  //    var humi = getdata1.val();
+  //    document.getElementById('humidity').innerHTML = humi + "%";
+  //  })
+
+    dataRef1.on('value', function(getdata1){
+     var temp = getdata1.val();
+     document.getElementById('temperature').innerHTML = temp + "&#8451;";
+   })
+
+   dataRef2.on('value', function(getdata2){
+     var temp = getdata2.val();
+     document.getElementById('diastolic').innerHTML = temp;
+   })
+
+   dataRef3.on('value', function(getdata3){
+     var temp = getdata3.val();
+     document.getElementById('systolic').innerHTML = temp;
+   })
+
+   dataRef4.on('value', function(getdata4){
+     var temp = getdata4.val();
+     document.getElementById('heartrate').innerHTML = temp;
+   })
+
+   dataRef5.on('value', function(getdata5){
+     var temp = getdata5.val();
+     document.getElementById('steps').innerHTML = temp;
+   })
+
+   dataRef6.on('value', function(getdata6){
+     var temp = getdata6.val();
+     document.getElementById('sleep disorder').innerHTML = temp;
+   })
+
+
+
+
+
+ </script>
+
+</body>
+</html>
