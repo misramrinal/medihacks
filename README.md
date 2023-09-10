@@ -42,6 +42,16 @@ Web page
 ![WhatsApp Image 2023-08-05 at 7 11 59 AM](https://github.com/monalisa22/FutureWearHackathon/assets/100671634/b99173a1-d04c-4116-bd11-d04bf7382d7d)
 ![WhatsApp Image 2023-08-05 at 7 11 59 AM (1)](https://github.com/monalisa22/FutureWearHackathon/assets/100671634/6dcf7062-292f-426e-80ff-279039d7bde0)
 
+## Situps
+https://github.com/misramrinal/medihacks/assets/100671634/60e564a8-ab07-41e6-99f4-5f3613cb7943
+
+## Pushups
+https://github.com/misramrinal/medihacks/assets/100671634/ef5d65f9-eb93-4305-9312-cddb05f4a654
+
+
+
+
+
 
 
 ## Roadmap
